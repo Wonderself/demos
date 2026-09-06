@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Demos — WonderSelf</title>
-  <meta name="description" content="Vitrine des démos : CineGeny, Regis, AISmad, Apptiv, MMax, Trapeze. Chaque marque reste séparée.">
+  <meta name="description" content="Working demos by a founder-builder. CineGeny, Regis, AISmad, Apptiv, MMax, Trapeze. Separate products, shipped with agents.">
   <meta name="theme-color" content="#0b0b0c">
   <meta property="og:title" content="Demos — WonderSelf">
-  <meta property="og:description" content="Six produits. Trois marques principales. Une page pour entrer.">
+  <meta property="og:description" content="Shipped products. Separate brands. Built to be used — and to show how I work.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0b0c'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Georgia' font-size='14' fill='%23e8e0d4'%3EW%3C/text%3E%3C/svg%3E">
   <style>
@@ -23,7 +23,6 @@
       --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
       --sans: "Helvetica Neue", Helvetica, "Segoe UI", system-ui, sans-serif;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { background: var(--bg); color: var(--ink); }
     body {
@@ -33,34 +32,30 @@
       -webkit-font-smoothing: antialiased;
     }
     a { color: inherit; text-decoration: none; }
-    .wrap {
-      width: min(1120px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 28px 0 0;
+      gap: 16px;
     }
-    .mark {
-      font-family: var(--serif);
-      font-size: 18px;
-      letter-spacing: 0.04em;
-    }
-    .mark span { color: var(--faint); font-family: var(--sans); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin-left: 12px; }
-    .locale {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+    .mark { font-family: var(--serif); font-size: 18px; letter-spacing: 0.04em; }
+    .mark span {
       color: var(--faint);
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-left: 12px;
     }
-
-    .hero {
-      padding: 88px 0 64px;
-      max-width: 720px;
-    }
+    .nav-right { display: flex; align-items: center; gap: 18px; }
+    .locale { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); }
+    .lang { display: flex; gap: 8px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .lang button { color: var(--faint); padding: 2px 0; }
+    .lang button[aria-pressed="true"] { color: var(--ink); }
+    .hero { padding: 88px 0 64px; max-width: 740px; }
     .kicker {
       font-size: 11px;
       letter-spacing: 0.22em;
@@ -77,12 +72,11 @@
     }
     .lead {
       margin-top: 22px;
-      max-width: 46ch;
+      max-width: 52ch;
       color: var(--muted);
       font-size: 17px;
       line-height: 1.55;
     }
-
     section { padding: 12px 0 72px; }
     .sec-title {
       display: flex;
@@ -93,29 +87,14 @@
       padding-bottom: 12px;
       border-bottom: 1px solid var(--line);
     }
-    .sec-title h2 {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 400;
-    }
+    .sec-title h2 { font-family: var(--serif); font-size: 22px; font-weight: 400; }
     .sec-title p {
       color: var(--faint);
       font-size: 12px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
-
-    .grid-main {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .grid-side {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
+    .grid-main, .grid-side { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .card {
       display: flex;
       flex-direction: column;
@@ -131,17 +110,8 @@
       transform: translateY(-2px);
       background: #161618;
     }
-    .card.soon {
-      opacity: 0.86;
-      cursor: default;
-    }
-    .top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
+    .card.soon { opacity: 0.86; cursor: default; }
+    .top { margin-bottom: 28px; }
     .badge {
       font-size: 10px;
       letter-spacing: 0.16em;
@@ -153,19 +123,8 @@
       padding: 4px 9px;
     }
     .badge.lab { color: var(--muted); background: transparent; border-color: var(--line); }
-    .name {
-      font-family: var(--serif);
-      font-size: 32px;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-    }
-    .blurb {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.5;
-      flex: 1;
-    }
+    .name { font-family: var(--serif); font-size: 32px; line-height: 1.05; letter-spacing: -0.02em; }
+    .blurb { margin-top: 12px; color: var(--muted); font-size: 15px; line-height: 1.5; flex: 1; }
     .foot {
       display: flex;
       align-items: center;
@@ -180,7 +139,6 @@
     .foot .go { color: var(--gold); }
     .card.compact { min-height: 220px; }
     .card.compact .name { font-size: 26px; }
-
     footer {
       display: flex;
       justify-content: space-between;
@@ -192,11 +150,11 @@
       font-size: 12px;
       letter-spacing: 0.08em;
     }
-
     @media (max-width: 860px) {
       .grid-main, .grid-side { grid-template-columns: 1fr; }
       .hero { padding: 56px 0 40px; }
       .card { min-height: auto; }
+      .locale { display: none; }
     }
   </style>
 </head>
@@ -204,39 +162,39 @@
   <div class="wrap">
     <header>
       <div class="mark">WonderSelf<span>Demos</span></div>
-      <div class="locale">Tel Aviv × Paris</div>
+      <div class="nav-right">
+        <div class="locale">Tel Aviv × Paris</div>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+        </div>
+      </div>
     </header>
-
     <div class="hero">
-      <p class="kicker">Vitrine produit</p>
-      <h1>Six produits.<br>Chacun son domaine.</h1>
-      <p class="lead">Page d’entrée pour les démos. Les trois marques restent séparées. On clique, on arrive sur le site du produit.</p>
+      <p class="kicker" data-i18n="kicker"></p>
+      <h1 data-i18n="title"></h1>
+      <p class="lead" data-i18n="lead"></p>
     </div>
-
     <section>
       <div class="sec-title">
-        <h2>Les trois</h2>
-        <p>Marques principales</p>
+        <h2 data-i18n="coreTitle"></h2>
+        <p data-i18n="coreSub"></p>
       </div>
       <div class="grid-main" id="core"></div>
     </section>
-
     <section>
       <div class="sec-title">
-        <h2>Aussi</h2>
-        <p>Atelier</p>
+        <h2 data-i18n="sideTitle"></h2>
+        <p data-i18n="sideSub"></p>
       </div>
       <div class="grid-side" id="side"></div>
     </section>
-
     <footer>
-      <div>Marques distinctes. Pas de monolithe.</div>
-      <div>WonderSelf · 2026</div>
+      <div data-i18n="footerL"></div>
+      <div data-i18n="footerR"></div>
     </footer>
   </div>
-
   <script>
-    /* Un seul endroit à éditer. Domaine réel = URL. Vide = carte visible, pas de faux lien. */
     const LINKS = {
       cinegeny: "https://www.cinegeny.com",
       regis: "",
@@ -245,77 +203,96 @@
       mmax: "",
       trapeze: ""
     };
-
-    const CORE = [
-      {
-        key: "cinegeny",
-        name: "CineGeny",
-        badge: "Studio",
-        text: "Plateforme de génération film IA. Human-in-the-loop : filmmakers, voters, casting, multi-pass, crowdfunding."
+    const I18N = {
+      en: {
+        kicker: "Builder portfolio",
+        title: "Shipped products.<br>Separate brands.",
+        lead: "I build and operate products with agents, end to end. This page is the door into the demos — useful if you are hiring a founder-builder, not a fundraising deck.",
+        coreTitle: "The three",
+        coreSub: "Main brands",
+        sideTitle: "Also shipping",
+        sideSub: "Workshop",
+        footerL: "Separate products. No monolith. No raise.",
+        footerR: "WonderSelf · Tel Aviv × Paris",
+        open: "Open →",
+        soon: "Link soon",
+        needLink: "Domain to plug in",
+        products: {
+          cinegeny: { badge: "Film", text: "AI film studio with human-in-the-loop: filmmakers, voters, casting, multi-pass, crowdfunding." },
+          regis: { badge: "Orchestration", text: "Jarvis-style orchestrator. Task to session to launch. Inside CineGeny it can appear as Conductor." },
+          aismad: { badge: "OS", text: "Self-hosted, RAG-able OS. Multi-model chat, memory, projects. Genybot lives here." },
+          apptiv: { badge: "Career", text: "Career command center: scoring, applications, follow-ups, interview prep. Nothing leaves without a human yes." },
+          mmax: { badge: "Combat", text: "Combat-sports network. Three taps: where to train, who to face, what to watch." },
+          trapeze: { badge: "Game", text: "Balance and timing game. Its own product, outside the three brands." }
+        }
       },
-      {
-        key: "regis",
-        name: "Regis",
-        badge: "Orchestration",
-        text: "Orchestrateur style Jarvis. De la tâche à la session, puis au lancement. Dans CineGeny on peut l’appeler Conductor."
-      },
-      {
-        key: "aismad",
-        name: "AISmad",
-        badge: "OS",
-        text: "OS open-source, RAG-able, self-hosted. Chat multi-model, mémoire, projets. Genybot vit dedans."
+      fr: {
+        kicker: "Portfolio builder",
+        title: "Produits shippés.<br>Marques séparées.",
+        lead: "Je construis et j’opère des produits avec des agents, de bout en bout. Cette page ouvre les démos — utile si vous embauchez un fondateur-builder, pas un pitch d’investissement.",
+        coreTitle: "Les trois",
+        coreSub: "Marques principales",
+        sideTitle: "Aussi en cours",
+        sideSub: "Atelier",
+        footerL: "Produits séparés. Pas de monolithe. Pas de levée.",
+        footerR: "WonderSelf · Tel Aviv × Paris",
+        open: "Ouvrir →",
+        soon: "Lien bientôt",
+        needLink: "Domaine à brancher",
+        products: {
+          cinegeny: { badge: "Film", text: "Studio film IA, human-in-the-loop : filmmakers, voters, casting, multi-pass, crowdfunding." },
+          regis: { badge: "Orchestration", text: "Orchestrateur style Jarvis. De la tâche à la session, puis au lancement. Dans CineGeny : Conductor." },
+          aismad: { badge: "OS", text: "OS self-hosted, RAG-able. Chat multi-model, mémoire, projets. Genybot vit dedans." },
+          apptiv: { badge: "Carrière", text: "Centre de commandement carrière : scoring, candidatures, relances, prep. Rien ne part sans un oui humain." },
+          mmax: { badge: "Combat", text: "Réseau sports de combat. Trois taps : où s’entraîner, qui affronter, quoi regarder." },
+          trapeze: { badge: "Jeu", text: "Jeu d’équilibre et de timing. Produit à part, hors des trois marques." }
+        }
       }
-    ];
-
-    const SIDE = [
-      {
-        key: "apptiv",
-        name: "Apptiv",
-        badge: "Carrière",
-        text: "Centre de commandement carrière : opportunités, matching CV, relances, prep entretien. Rien ne part sans validation humaine."
-      },
-      {
-        key: "mmax",
-        name: "MMax",
-        badge: "Combat",
-        text: "Réseau sports de combat. En 3 taps : où s’entraîner, qui affronter, quoi regarder."
-      },
-      {
-        key: "trapeze",
-        name: "Trapeze",
-        badge: "Jeu",
-        text: "Jeu d’équilibre et de précision. Une démo autonome, hors des trois marques."
-      }
-    ];
-
-    function hostLabel(url) {
-      if (!url) return "Domaine à brancher";
+    };
+    const CORE = ["cinegeny", "regis", "aismad"];
+    const SIDE = ["apptiv", "mmax", "trapeze"];
+    const NAMES = { cinegeny: "CineGeny", regis: "Regis", aismad: "AISmad", apptiv: "Apptiv", mmax: "MMax", trapeze: "Trapeze" };
+    function hostLabel(url, t) {
+      if (!url) return t.needLink;
       try { return new URL(url).host.replace(/^www\./, ""); }
       catch { return url; }
     }
-
-    function card(item, compact) {
-      const url = LINKS[item.key];
+    function card(key, compact, t) {
+      const url = LINKS[key];
+      const p = t.products[key];
       const tag = url ? "a" : "article";
       const href = url ? ` href="${url}" target="_blank" rel="noopener noreferrer"` : "";
-      const soon = url ? "" : " soon";
-      const go = url ? "Ouvrir →" : "Bientôt";
-      return `
-        <${tag} class="card${compact ? " compact" : ""}${soon}"${href}>
-          <div class="top">
-            <span class="badge${url ? "" : " lab"}">${item.badge}</span>
-          </div>
-          <div class="name">${item.name}</div>
-          <p class="blurb">${item.text}</p>
-          <div class="foot">
-            <span>${hostLabel(url)}</span>
-            <span class="go">${go}</span>
-          </div>
-        </${tag}>`;
+      return `<${tag} class="card${compact ? " compact" : ""}${url ? "" : " soon"}"${href}>
+        <div class="top"><span class="badge${url ? "" : " lab"}">${p.badge}</span></div>
+        <div class="name">${NAMES[key]}</div>
+        <p class="blurb">${p.text}</p>
+        <div class="foot"><span>${hostLabel(url, t)}</span><span class="go">${url ? t.open : t.soon}</span></div>
+      </${tag}>`;
     }
-
-    document.getElementById("core").innerHTML = CORE.map((i) => card(i, false)).join("");
-    document.getElementById("side").innerHTML = SIDE.map((i) => card(i, true)).join("");
+    function setLang(lang) {
+      const t = I18N[lang] || I18N.en;
+      document.documentElement.lang = lang;
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        el.innerHTML = t[el.dataset.i18n] || "";
+      });
+      document.getElementById("core").innerHTML = CORE.map((k) => card(k, false, t)).join("");
+      document.getElementById("side").innerHTML = SIDE.map((k) => card(k, true, t)).join("");
+      document.querySelectorAll(".lang button").forEach((b) => {
+        b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
+      });
+      try { localStorage.setItem("demos-lang", lang); } catch (e) {}
+    }
+    document.querySelectorAll(".lang button").forEach((b) => {
+      b.addEventListener("click", () => setLang(b.dataset.lang));
+    });
+    const start = (() => {
+      try {
+        const saved = localStorage.getItem("demos-lang");
+        if (saved === "fr" || saved === "en") return saved;
+      } catch (e) {}
+      return (navigator.language || "en").toLowerCase().startsWith("fr") ? "fr" : "en";
+    })();
+    setLang(start);
   </script>
 </body>
 </html>
