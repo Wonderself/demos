@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demos — WonderSelf</title>
+  <meta name="description" content="Vitrine des démos : CineGeny, Regis, AISmad, Apptiv, MMax, Trapeze. Chaque marque reste séparée.">
+  <meta name="theme-color" content="#0b0b0c">
+  <meta property="og:title" content="Demos — WonderSelf">
+  <meta property="og:description" content="Six produits. Trois marques principales. Une page pour entrer.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0b0c'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Georgia' font-size='14' fill='%23e8e0d4'%3EW%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #0b0b0c;
+      --bg-2: #121214;
+      --line: rgba(232, 224, 212, 0.12);
+      --ink: #e8e0d4;
+      --muted: rgba(232, 224, 212, 0.62);
+      --faint: rgba(232, 224, 212, 0.38);
+      --gold: #c4a574;
+      --gold-dim: rgba(196, 165, 116, 0.16);
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+      --sans: "Helvetica Neue", Helvetica, "Segoe UI", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--ink); }
+    body {
+      font-family: var(--sans);
+      min-height: 100vh;
+      letter-spacing: 0.01em;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0 0;
+    }
+    .mark {
+      font-family: var(--serif);
+      font-size: 18px;
+      letter-spacing: 0.04em;
+    }
+    .mark span { color: var(--faint); font-family: var(--sans); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin-left: 12px; }
+    .locale {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .hero {
+      padding: 88px 0 64px;
+      max-width: 720px;
+    }
+    .kicker {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(36px, 6vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      margin-top: 22px;
+      max-width: 46ch;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    section { padding: 12px 0 72px; }
+    .sec-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .sec-title h2 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+    }
+    .sec-title p {
+      color: var(--faint);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .grid-main {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .grid-side {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      min-height: 280px;
+      padding: 26px 24px 22px;
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      transition: border-color .2s ease, transform .2s ease, background .2s ease;
+    }
+    a.card:hover {
+      border-color: rgba(196, 165, 116, 0.45);
+      transform: translateY(-2px);
+      background: #161618;
+    }
+    .card.soon {
+      opacity: 0.86;
+      cursor: default;
+    }
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .badge {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-dim);
+      border: 1px solid rgba(196, 165, 116, 0.28);
+      border-radius: 999px;
+      padding: 4px 9px;
+    }
+    .badge.lab { color: var(--muted); background: transparent; border-color: var(--line); }
+    .name {
+      font-family: var(--serif);
+      font-size: 32px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .blurb {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--faint);
+    }
+    .foot .go { color: var(--gold); }
+    .card.compact { min-height: 220px; }
+    .card.compact .name { font-size: 26px; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 28px 0 48px;
+      border-top: 1px solid var(--line);
+      color: var(--faint);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 860px) {
+      .grid-main, .grid-side { grid-template-columns: 1fr; }
+      .hero { padding: 56px 0 40px; }
+      .card { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="mark">WonderSelf<span>Demos</span></div>
+      <div class="locale">Tel Aviv × Paris</div>
+    </header>
+
+    <div class="hero">
+      <p class="kicker">Vitrine produit</p>
+      <h1>Six produits.<br>Chacun son domaine.</h1>
+      <p class="lead">Page d’entrée pour les démos. Les trois marques restent séparées. On clique, on arrive sur le site du produit.</p>
+    </div>
+
+    <section>
+      <div class="sec-title">
+        <h2>Les trois</h2>
+        <p>Marques principales</p>
+      </div>
+      <div class="grid-main" id="core"></div>
+    </section>
+
+    <section>
+      <div class="sec-title">
+        <h2>Aussi</h2>
+        <p>Atelier</p>
+      </div>
+      <div class="grid-side" id="side"></div>
+    </section>
+
+    <footer>
+      <div>Marques distinctes. Pas de monolithe.</div>
+      <div>WonderSelf · 2026</div>
+    </footer>
+  </div>
+
+  <script>
+    /* Un seul endroit à éditer. Domaine réel = URL. Vide = carte visible, pas de faux lien. */
+    const LINKS = {
+      cinegeny: "https://www.cinegeny.com",
+      regis: "",
+      aismad: "",
+      apptiv: "",
+      mmax: "",
+      trapeze: ""
+    };
+
+    const CORE = [
+      {
+        key: "cinegeny",
+        name: "CineGeny",
+        badge: "Studio",
+        text: "Plateforme de génération film IA. Human-in-the-loop : filmmakers, voters, casting, multi-pass, crowdfunding."
+      },
+      {
+        key: "regis",
+        name: "Regis",
+        badge: "Orchestration",
+        text: "Orchestrateur style Jarvis. De la tâche à la session, puis au lancement. Dans CineGeny on peut l’appeler Conductor."
+      },
+      {
+        key: "aismad",
+        name: "AISmad",
+        badge: "OS",
+        text: "OS open-source, RAG-able, self-hosted. Chat multi-model, mémoire, projets. Genybot vit dedans."
+      }
+    ];
+
+    const SIDE = [
+      {
+        key: "apptiv",
+        name: "Apptiv",
+        badge: "Carrière",
+        text: "Centre de commandement carrière : opportunités, matching CV, relances, prep entretien. Rien ne part sans validation humaine."
+      },
+      {
+        key: "mmax",
+        name: "MMax",
+        badge: "Combat",
+        text: "Réseau sports de combat. En 3 taps : où s’entraîner, qui affronter, quoi regarder."
+      },
+      {
+        key: "trapeze",
+        name: "Trapeze",
+        badge: "Jeu",
+        text: "Jeu d’équilibre et de précision. Une démo autonome, hors des trois marques."
+      }
+    ];
+
+    function hostLabel(url) {
+      if (!url) return "Domaine à brancher";
+      try { return new URL(url).host.replace(/^www\./, ""); }
+      catch { return url; }
+    }
+
+    function card(item, compact) {
+      const url = LINKS[item.key];
+      const tag = url ? "a" : "article";
+      const href = url ? ` href="${url}" target="_blank" rel="noopener noreferrer"` : "";
+      const soon = url ? "" : " soon";
+      const go = url ? "Ouvrir →" : "Bientôt";
+      return `
+        <${tag} class="card${compact ? " compact" : ""}${soon}"${href}>
+          <div class="top">
+            <span class="badge${url ? "" : " lab"}">${item.badge}</span>
+          </div>
+          <div class="name">${item.name}</div>
+          <p class="blurb">${item.text}</p>
+          <div class="foot">
+            <span>${hostLabel(url)}</span>
+            <span class="go">${go}</span>
+          </div>
+        </${tag}>`;
+    }
+
+    document.getElementById("core").innerHTML = CORE.map((i) => card(i, false)).join("");
+    document.getElementById("side").innerHTML = SIDE.map((i) => card(i, true)).join("");
+  </script>
+</body>
+</html>
