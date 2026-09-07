@@ -16,6 +16,15 @@ const NAMES = {
   trapeze: "Trapeze"
 };
 
+const MEDIA = {
+  cinegeny: { shot: "media/cinegeny.jpg", clip: "media/cinegeny.mp4" },
+  regis: { shot: "media/regis.jpg", clip: "media/regis.mp4" },
+  aismad: { shot: "media/aismad.jpg", clip: "media/aismad.mp4" },
+  apptiv: { shot: "media/apptiv.jpg", clip: "media/apptiv.mp4" },
+  mmax: { shot: "media/mmax.jpg", clip: "media/mmax.mp4" },
+  trapeze: { shot: "media/trapeze.jpg", clip: "media/trapeze.mp4" }
+};
+
 const CORE = ["cinegeny", "regis", "aismad"];
 const SIDE = ["apptiv", "mmax", "trapeze"];
 
@@ -33,6 +42,10 @@ const I18N = {
     sideSub: "Workshop",
     footerL: "Separate products. No monolith. No raise.",
     open: "Open →",
+    shot: "Homepage",
+    clip: "Clip",
+    shotHint: "Drop media/{slug}.jpg",
+    clipHint: "Drop media/{slug}.mp4",
     methodKicker: "Method",
     methodTitle: "How these products get built",
     methodLead: "One operator. Several models. House software. Agents do the repetition. I keep the cuts, the architecture and the go-live.",
@@ -58,6 +71,10 @@ const I18N = {
     sideSub: "Atelier",
     footerL: "Produits séparés. Pas de monolithe. Pas de levée.",
     open: "Ouvrir →",
+    shot: "Accueil",
+    clip: "Vidéo",
+    shotHint: "Ajouter media/{slug}.jpg",
+    clipHint: "Ajouter media/{slug}.mp4",
     methodKicker: "Méthode",
     methodTitle: "Comment ces produits se construisent",
     methodLead: "Un opérateur. Plusieurs modèles. Logiciel maison. Les agents font la répétition. Je garde les coupes, l’architecture et le go-live.",
@@ -83,6 +100,10 @@ const I18N = {
     sideSub: "סדנה",
     footerL: "מוצרים נפרדים. בלי מונולית. בלי גיוס.",
     open: "לפתיחה ←",
+    shot: "דף הבית",
+    clip: "סרטון",
+    shotHint: "media/{slug}.jpg",
+    clipHint: "media/{slug}.mp4",
     methodKicker: "שיטה",
     methodTitle: "איך המוצרים האלה נבנים",
     methodLead: "מפעיל אחד. כמה מודלים. תוכנה ביתית. הסוכנים עושים את החזרה. אני שומר את החיתוך, הארכיטקטורה והעלייה לאוויר.",
@@ -138,11 +159,27 @@ function currentLang() {
   return "en";
 }
 
+function mediaBlock(key, lang) {
+  const t = I18N[lang];
+  const m = MEDIA[key];
+  return `<div class="media">
+    <div class="shot">
+      <img src="${m.shot}" alt="${NAMES[key]}" onerror="this.style.display='none'">
+      <div class="ph">${t.shot}<small>${t.shotHint.replace("{slug}", key)}</small></div>
+    </div>
+    <div class="clip">
+      <video src="${m.clip}" muted playsinline preload="metadata" onerror="this.style.display='none'"></video>
+      <div class="ph">${t.clip}<small>${t.clipHint.replace("{slug}", key)}</small></div>
+    </div>
+  </div>`;
+}
+
 function card(key, compact, lang) {
   const t = I18N[lang];
   const p = COPY[lang][key];
   const url = LINKS[key];
   return `<a class="card${compact ? " compact" : ""}" href="${url}" target="_blank" rel="noopener noreferrer">
+    ${mediaBlock(key, lang)}
     <div class="top"><span class="badge">${p.badge}</span></div>
     <div class="name">${NAMES[key]}</div>
     <p class="blurb">${p.text}</p>
