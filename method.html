@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How I build — WonderSelf</title>
+  <meta name="theme-color" content="#0b0b0c">
+  <style>
+    :root{--bg:#0b0b0c;--bg2:#121214;--line:rgba(232,224,212,.12);--ink:#e8e0d4;--muted:rgba(232,224,212,.62);--faint:rgba(232,224,212,.38);--gold:#c4a574;--goldim:rgba(196,165,116,.16);--serif:"Iowan Old Style","Palatino Linotype",Palatino,"Times New Roman",serif;--sans:"Helvetica Neue",Helvetica,"Segoe UI",system-ui,sans-serif}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{background:var(--bg);color:var(--ink)}
+    body{font-family:var(--sans);min-height:100vh;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+    .wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
+    header{display:flex;align-items:center;justify-content:space-between;padding:28px 0 0;gap:16px}
+    .mark{font-family:var(--serif);font-size:18px}
+    .mark span{color:var(--faint);font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-inline-start:12px}
+    .nav-right{display:flex;align-items:center;gap:16px}
+    .nav-link{font-size:12px;color:var(--muted)}
+    .lang{display:flex;gap:10px;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+    .lang button{color:var(--faint)}
+    .lang button[aria-pressed=true]{color:var(--ink)}
+    .hero{padding:88px 0 48px;max-width:740px}
+    .kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+    html[dir=rtl] .kicker{letter-spacing:.06em}
+    h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,6vw,56px);line-height:1.08}
+    .lead{margin-top:22px;max-width:54ch;color:var(--muted);font-size:17px;line-height:1.55}
+    section{padding:12px 0 72px}
+    #steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--bg2);border:1px solid var(--line);border-radius:18px;min-height:180px}
+    .name{font-family:var(--serif);line-height:1.15}
+    .blurb{margin-top:12px;color:var(--muted);font-size:15px;line-height:1.5}
+    footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:28px 0 48px;border-top:1px solid var(--line);color:var(--faint);font-size:12px}
+    @media(max-width:860px){#steps{grid-template-columns:1fr}.hero{padding:56px 0 36px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="mark" data-home href="index.html">WonderSelf<span>Demos</span></a>
+      <div class="nav-right">
+        <a class="nav-link" data-home href="index.html">←</a>
+        <div class="lang" role="group">
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="fr">FR</button>
+          <button type="button" data-lang="he">עב</button>
+        </div>
+      </div>
+    </header>
+    <div class="hero">
+      <p class="kicker" data-i="methodKicker"></p>
+      <h1 data-i="methodTitle"></h1>
+      <p class="lead" data-i="methodLead"></p>
+    </div>
+    <section id="steps"></section>
+    <footer><div data-i="footerL"></div><div>WonderSelf · Tel Aviv × Paris</div></footer>
+  </div>
+  <script src="app.js"></script>
+  <script>window.DEMOS_PAGE="method";window.DEMOS_BOOT()</script>
+</body>
+</html>
